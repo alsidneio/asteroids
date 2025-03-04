@@ -1,3 +1,4 @@
+import sys
 import pygame
 from constants import *
 import constants
@@ -33,6 +34,9 @@ def main():
         pygame.display.flip()
         dt = game_clock.tick(60) / 1000
         updatable.update(dt)
+        for item in asteroids:
+            if item.collision(player):
+                sys.exit("Game over!")
 
     print(f"Screen width: {constants.SCREEN_WIDTH}")
     print(f"Screen height: {constants.SCREEN_HEIGHT}")
